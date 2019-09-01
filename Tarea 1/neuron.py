@@ -3,7 +3,7 @@ import numpy as np
 
 class Neuron:
     def __init__(self, activation_fun, weights, bias):
-        if self._is_numeric(weights) and self._is_numeric((bias)):
+        if self._is_numeric(weights) and self._is_numeric([bias]):
             self.activation_fun = activation_fun
             self.W = np.array(weights)
             self.b = bias
@@ -24,7 +24,7 @@ class Neuron:
         if is_output:
             self.recalculate_error_output(y)
         else:
-            self.recalculate_error_output(y[0], y[1])
+            self.recalculate_error_hidden(y[0], y[1])
         self.recalculate_delta()
         self.recalculate_weights(lr)
         self.recalculate_bias(lr)

@@ -27,15 +27,15 @@ class NeuronLayer:
             self.output = Z
             return Z
 
-    def train(self, next_layer, lr, y=None):
-        if y == None: # hidden layer
+    def train(self, lr, next_layer=None, y=np.array([])):
+        if len(y) == 0: # hidden layer
             for i in range(len(self.neurons)):
                 W = []
                 D = []         
                 for neuron in next_layer.neurons:
                     W.append(neuron.W[i])
-                    D.append(neuron.d)
-                self.neurons[i].train((np.array(W), np.array(D)), lr)
+                    D.append(neuron.delta)
+                self.neurons[i].train([np.array(W), np.array(D)], lr)
         else: # output layer            
             for neuron, out in zip(self.neurons, y):
                 neuron.train(out, lr, is_output=True)
@@ -57,3 +57,9 @@ class NeuronLayer:
             if not isinstance(x, (int, float)):
                 raise Exception("Data is non-numerical")
         return True
+
+    def _validate_length(self, arg1, arg2):
+        if len(arg1) != len(arg2):
+            raise Exception("Inconsistent data length")
+        return True
+
