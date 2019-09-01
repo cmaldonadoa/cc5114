@@ -5,10 +5,11 @@ import numpy as np
 class NeuronLayer:
     def __init__(self, activation_funs, weights):
         if self._validate_length(activation_funs, weights):
-            self.neurons = np.empty()
+            self.neurons = []
             for f, W in zip(activation_funs, weights):
                 neuron = n.Neuron(f, W, 0)
-                self.neurons = np.append(self.neurons, neuron)
+                self.neurons.append(neuron)
+            self.neurons = np.array(self.neurons)
 
             self.input = None
             self.output = None
@@ -18,22 +19,23 @@ class NeuronLayer:
     def feed(self, X):
         if self._is_numeric(X):
             self.input = X
-            Z = np.empty()
+            Z = []
             for neuron in self.neurons:
                 z = neuron.feed(X)
-                Z = np.append(Z, z)
+                Z.append(z)
+            Z = np.array(Z)
             self.output = Z
             return Z
 
     def train(self, next_layer, lr, y=None):
         if y == None: # hidden layer
             for i in range(len(self.neurons)):
-                W = np.empty()
-                D = np.empty()         
+                W = []
+                D = []         
                 for neuron in next_layer.neurons:
-                    W = np.append(neuron.W[i])
-                    D = np.append(neuron.d)
-                self.neurons[i].train((W, D), lr)
+                    W.append(neuron.W[i])
+                    D.append(neuron.d)
+                self.neurons[i].train((np.array(W), np.array(D)), lr)
         else: # output layer            
             for neuron, out in zip(self.neurons, y):
                 neuron.train(out, lr, is_output=True)
@@ -44,12 +46,12 @@ class NeuronLayer:
 
     def recalculate_error_hidden(self, next_layer):
         for i in range(len(self.neurons)):
-            W = np.empty()
-            D = np.empty()         
+            W = []
+            D = []         
             for neuron in next_layer.neurons:
-                W = np.append(neuron.W[i])
-                D = np.append(neuron.d)                
-            self.neurons[i].recalculate_error_hidden(W, D)
+                W.append(neuron.W[i])
+                D.append(neuron.d)                
+            self.neurons[i].recalculate_error_hidden(np.array(W), np.array(D))
     def _is_numeric(self, array):
         for x in array:
             if not isinstance(x, (int, float)):

@@ -14,7 +14,7 @@ class NeuralNetwork:
 
             self.weights = self._create_weights()
             self.activation_funs = self._create_activations()
-            self.layers = np.empty()
+            self.layers = []
             self.lr = 0.01
 
     def set_activation_functions(self, funs):
@@ -51,6 +51,7 @@ class NeuralNetwork:
             for w, fun in zip(self.weights, self.activation_funs):
                 layer = nl.NeuronLayer(fun, w)
                 self.layers.append(layer)
+            self.layers = np.array(self.layers)
 
     def _backwards_prop(self, y):
         for i in range(n_layers):
@@ -66,21 +67,22 @@ class NeuralNetwork:
         return cost
                 
     def _create_weights(self):
-        weights = np.empty()
+        weights = []
         for n in self.n_neurons_per_layer:
             W = np.random.randn(n)
-            weights = np.append(weights, W)
-        self.weights = weights
+            weights.append(W)
+        self.weights = np.array(weights)
         
     def _create_activations(self):
-        funs = np.empty()
+        funs = []
         for n in self.n_neurons_per_layer:
-            F = np.empty()
+            F = []
             for i in range(n):
                 f = af.Sigmoid()
-                F = np.append(F, f)
-            funs = np.append(funs, F)
-        self.activation_funs = funs
+                F.append(f)
+            F = np.array(F)
+            funs.append(F)
+        self.activation_funs = np.array(funs)
 
     def _is_numeric(self, array):
         for x in array:
