@@ -55,18 +55,22 @@ En general, los resultados obtenidos son bastante buenos. A continuación se pue
 
 |                 |    |   | **Predicted Values** |    |
 |:---------------:|:--:|:-:|:--------------------:|:--:|
-|                 |  clase  | 0 |         1            |  2 |
-| **True Values** |  0 | 8 |         0            |  3 |
-|                 |  1 | 0 |        14            |  0 |
-|                 |  2 | 0 |         0            | 17 |
+|                 |  *clase*  | **0** |         **1**            |  **2** |
+| **True Values** |  **0** | 8 |         0            |  3 |
+|                 |  **1** | 0 |        14            |  0 |
+|                 |  **2** | 0 |         0            | 17 |
 
 ### Wifi localization dataset
 ![](img/wifi_localization_results.png)
 
 |                 |    |    | **Predicted Values** |    |     |
 |:---------------:|:--:|:--:|:--------------------:|:--:|:---:|
-|                 |    |  0 |                    1 |  2 |   3 |
-|                 |  0 | 96 |           0          |  6 |  2  |
-| **True Values** | 1  |  1 |          89          |  5 |  0  |
-|                 | 2  |  0 |           0          | 88 |  0  |
-|                 | 3  |  0 |           0          |  2 | 111 |
+|                 |  *clase*  |  **0** |                    **1** |  **2** |   **3** |
+|                 |  **0** | 96 |           0          |  6 |  2  |
+| **True Values** | **1**  |  1 |          89          |  5 |  0  |
+|                 | **2**  |  0 |           0          | 88 |  0  |
+|                 | **3**  |  0 |           0          |  2 | 111 |
+
+## Replicación de los resultados
+
+En el archivo *main.py* se encuentra el código ejecutado para obtener estos resultados. Para obtener los resultados de un dataset u otro basta cambiar la ubicación del dataset al momento de cargarlo.
