@@ -51,7 +51,7 @@ El entrenamiento se realizó separando el dataset en 80% entrenamiento y 20% tes
 En general, los resultados obtenidos son bastante buenos. A continuación se puede observar como la red neuronal aumenta la cantidad de clases correctas predichas cada vez, y disminuye las incorrectas. Además, en las matrices de confusión se observa que casi todas las clases fueron predichas casi completamente de forma correcta.
 
 ### Seeds dataset
-![](seeds_dataset_results.png)
+![](img/seeds_dataset_results.png)
 
 |                 |    |   | **Predicted Values** |    |
 |:---------------:|:--:|:-:|:--------------------:|:--:|
@@ -61,7 +61,7 @@ En general, los resultados obtenidos son bastante buenos. A continuación se pue
 |                 |  2 | 0 |         0            | 17 |
 
 ### Wifi localization dataset
-![](wifi_localization_results.png)
+![](img/wifi_localization_results.png)
 
 |                 |    |    | **Predicted Values** |    |     |
 |:---------------:|:--:|:--:|:--------------------:|:--:|:---:|
