@@ -46,13 +46,15 @@ Dado que el entrenamiento se hace de manera secuencial (uno a la vez), el entren
 
 ## Resultados
 
-El entrenamiento se realizó separando el dataset en 80% entrenamiento y 20% testeo de forma aleatoria. La información que se presenta son las predicciones realizadas sobre la parte separada para testeo.
+El entrenamiento se realizó separando el dataset en 80% entrenamiento y 20% testeo de forma aleatoria. La matriz de confusión que se presenta son las predicciones realizadas sobre la parte separada para testeo.
 
-En general, los resultados obtenidos son bastante buenos. A continuación se puede observar como la red neuronal aumenta la cantidad de clases correctas predichas cada vez, y disminuye las incorrectas. Además, en las matrices de confusión se observa que casi todas las clases fueron predichas casi completamente de forma correcta.
+En general, los resultados obtenidos son bastante buenos. A continuación se puede observar como, en el entrenamiento, la red neuronal aumenta la cantidad de clases correctas predichas cada vez, y disminuye las incorrectas. Además, en las matrices de confusión se observa que casi todas las clases fueron predichas casi completamente de forma correcta.
 
 ### Seeds dataset
+#### Resultados entrenamiento
 ![](img/seeds_dataset_results.png)
 
+#### Resultados testing
 |                 |    |   | **Predicted Values** |    |
 |:---------------:|:--:|:-:|:--------------------:|:--:|
 |                 |  *clase*  | **0** |         **1**            |  **2** |
@@ -61,8 +63,10 @@ En general, los resultados obtenidos son bastante buenos. A continuación se pue
 |                 |  **2** | 0 |         0            | 17 |
 
 ### Wifi localization dataset
+#### Resultados entrenamiento
 ![](img/wifi_localization_results.png)
 
+#### Resultados testing
 |                 |    |    | **Predicted Values** |    |     |
 |:---------------:|:--:|:--:|:--------------------:|:--:|:---:|
 |                 |  *clase*  |  **0** |                    **1** |  **2** |   **3** |
