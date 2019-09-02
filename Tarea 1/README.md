@@ -8,33 +8,33 @@
 
 ## Datasets soportados
 
-El código fue probado con los datasets de [seeds](https://archive.ics.uci.edu/ml/datasets/seeds) y [wifi indoor localization](https://archive.ics.uci.edu/ml/datasets/Wireless+Indoor+Localization), pero deberíaa funcionar con cualquier dataset cuyos atributos sean números y deban ser clasificados a una única clase.
+El código fue probado con los datasets de [seeds](https://archive.ics.uci.edu/ml/datasets/seeds) y [wifi indoor localization](https://archive.ics.uci.edu/ml/datasets/Wireless+Indoor+Localization), pero debería funcionar con cualquier dataset cuyos atributos sean números y deban ser clasificados a una única clase.
 
 ## Implementación
 
-La implementación de la red neuronal utiliza objetos, teniendo tres clases principales: *Neuron* para cada neurona; *NeuronLayer* para cada capa de neuronas; y *NeuralNetwork* para la red neuronal. Todo el entrenamiento y predicciones se realizan a través de un objeto de la clase *NeuralNetwork*, pues los objetos de las otras clases son creados de manera automática.
+La implementación de la red neuronal utiliza objetos, teniendo tres clases principales: *Neuron* para cada neurona; *NeuronLayer* para cada capa de neuronas; y *NeuralNetwork* para la red neuronal. Todo el entrenamiento y predicciones se realizan a través de un objeto de la clase *NeuralNetwork*. Obejtos de las demás clases son creados de manera automática.
 
-Las funciones de activación se representan con objetos, teniendo dos métodos necesarios:
+Las funciones de activación también se representan con objetos, teniendo dos métodos necesarios:
 
 * *apply*(x): aplica la función al valor *x*
 * *derivative*(x): aplica la derivada de la función al valor *x*
 
 ### Configuración de la red neuronal
 
-La red neuronal genera datos aleatorios para los pesos y funciones de activación, además de tener valores definidos para el *learning rate* y la cantidad de iteraciones de cada entrenamiento. Sin embargo, también posee funciones para definir manualmente estos valores, las cuales son:
+La red neuronal genera datos aleatorios para los pesos y funciones de activación basandose en la cantidad de neuronas por capa y la cantidad de *inputs*. Además, tiene valores definidos por defecto para el *learning rate* y la cantidad de iteraciones de cada entrenamiento. Sin embargo, existen funciones para definir manualmente estos valores, estas son:
 
-* set_weights(weights)
-* set_activation_functions(functions)
-* set_learning_rate(lr)
-* set_iterations(n)
+* set_weights(weights): define los pesos para cada neurona
+* set_activation_functions(functions): define las funciones de activación para cada neurona
+* set_learning_rate(lr): define el *learning rate*
+* set_iterations(n): define el número de iteraciones para cada entrenamiento
 
 Además, una vez *seteados* estos valores, debe utilizarse la función *build()* para crear las capas de neuronas.
 
 ### Entrenamiento de la red neuronal
 
-El entrenamiento de la red se realiza con el método *train*, el cual tiene como argumentos los todos atributos y las clases que se deseen utilizar en el entrenamiento. Es necesario que los arreglos de los atributos y las clases coindican en los índices (es decir, los i-ésimos atributos entregados están asociados a la i-ésima clase entregada).
+El entrenamiento de la red se realiza con el método *train*, el cual tiene como argumentos una matriz con todos los atributos, y un arreglo con todas las clases que se deseen utilizar en el entrenamiento. Es necesario que los arreglos de los atributos y las clases coincidan en los índices (es decir, los i-ésimos atributos entregados están asociados a la i-ésima clase entregada).
 
-La clasificación se realiza utilizando *1-hot encoding* para las clases buscadas, por lo que soporta tanto clases tipo *string* como numéricas.
+La clasificación se realiza utilizando *1-hot encoding* sobre las posibles clases, por lo que soporta tanto clases tipo *string* como numéricas.
 
 ### Predicciones
 
@@ -42,11 +42,11 @@ Una vez que se ha entrenado la red neuronal, basta utilizar el método *feed*, e
 
 ### Eficiencia
 
-Dado que el entrenamiento se hace de manera secuencial, el entrenamiento para datasets muy grandes puede tardar bastante tiempo, sobre todo si se realiza una gran cantidad de iteraciones cada vez.
+Dado que el entrenamiento se hace de manera secuencial (uno a la vez), el entrenamiento para datasets muy grandes puede tardar bastante tiempo, sobre todo si se realiza una gran cantidad de iteraciones cada vez.
 
 ## Resultados
 
-El entrenamiento se realizó separando el dataset en 80% entrenamiento y 20% testeo de forma aleatoria. La información que se presenta son las predicciones realizadas sobre el set de testeo.
+El entrenamiento se realizó separando el dataset en 80% entrenamiento y 20% testeo de forma aleatoria. La información que se presenta son las predicciones realizadas sobre la parte separada para testeo.
 
 En general, los resultados obtenidos son bastante buenos. A continuación se puede observar como la red neuronal aumenta la cantidad de clases correctas predichas cada vez, y disminuye las incorrectas. Además, en las matrices de confusión se observa que casi todas las clases fueron predichas casi completamente de forma correcta.
 
