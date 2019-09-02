@@ -28,6 +28,7 @@ class NeuralNetwork:
             self._create_activations()
             
             self.training_results = []
+            self.built = False
             
     # n: number of iterations to be set
     # sets the number of iterations of the training
@@ -93,10 +94,12 @@ class NeuralNetwork:
 
     # creates the layer for the network
     def build(self):
-        for w, fun in zip(self.weights, self.activation_funs):
-            layer = nl.NeuronLayer(fun, w)
-            self.layers.append(layer)
-        self.layers = np.array(self.layers)
+        if not self.built:
+            for w, fun in zip(self.weights, self.activation_funs):
+                layer = nl.NeuronLayer(fun, w)
+                self.layers.append(layer)
+            self.layers = np.array(self.layers)
+            self.built = True
 
     # applies backward propagation
     def _backwards_prop(self, y):
