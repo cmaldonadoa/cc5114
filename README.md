@@ -1,1 +1,3 @@
-# cc5114
+# CC5114 - Redes Neuronales y Programación Genética
+
+Repositorio para tareas y ejercicios
