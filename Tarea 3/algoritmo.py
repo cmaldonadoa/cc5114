@@ -112,7 +112,6 @@ class GeneticAlgorithm(object):
                     break
                 i -= 1
 
-            print([self.fitness_fun(x, *fitness_args) for x in population])
             best = population[0]
             worst = population[-1]
             best_fitness = self.fitness_fun(best, *fitness_args)
